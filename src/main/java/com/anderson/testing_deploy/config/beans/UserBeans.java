@@ -19,27 +19,22 @@ import org.springframework.context.annotation.Configuration;
 public class UserBeans {
 
     @Bean
-    public UserRepository userRepository() {
-        return new UserRepositoryImpl();
-    }
-
-    @Bean
-    public RegisterUserUseCasePort registerUserUseCasePort(UserRepository repository) {
+    public RegisterUserUseCasePort registerUserUseCasePort(UserRepositoryImpl repository) {
         return new RegisterUserUseCaseImpl(repository);
     }
 
     @Bean
-    public FindUserByIdUseCasePort findUserByIdUseCasePort(UserRepository repository) {
+    public FindUserByIdUseCasePort findUserByIdUseCasePort(UserRepositoryImpl repository) {
         return new FindUserByIdUseCaseImpl(repository);
     }
 
     @Bean
-    public UpdateUserUseCasePort updateUserUseCasePort(UserRepository repository, FindUserByIdUseCasePort findUserById) {
+    public UpdateUserUseCasePort updateUserUseCasePort(UserRepositoryImpl repository, FindUserByIdUseCasePort findUserById) {
         return new UpdateUserUseCaseImpl(repository, findUserById);
     }
 
     @Bean
-    public DeleteUserUseCasePort deleteUserUseCasePort(UserRepository repository, FindUserByIdUseCasePort findUserById) {
+    public DeleteUserUseCasePort deleteUserUseCasePort(UserRepositoryImpl repository, FindUserByIdUseCasePort findUserById) {
         return new DeleteUserUseCaseImpl(repository, findUserById);
     }
 }
