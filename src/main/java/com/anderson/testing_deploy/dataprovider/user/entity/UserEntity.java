@@ -1,14 +1,14 @@
 package com.anderson.testing_deploy.dataprovider.user.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
 import java.util.UUID;
 
 @Entity
 @Table(name = "tb_users")
 public class UserEntity {
-
+    @Id
+    @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
     private String name;
     private String email;
